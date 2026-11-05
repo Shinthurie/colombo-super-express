@@ -140,6 +140,9 @@ footer .container{line-height:1.7}
 .fcontact{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
 .fcontact a{color:var(--blue);font-weight:700;word-break:break-all}
 footer a:hover{text-decoration:underline}
+footer{display:none}
+body[data-screen="home"] footer{display:block}
+.ftitle{flex-basis:100%;font-size:15px;font-weight:800;color:var(--ink);margin-bottom:-8px}
 
 /* ---------- Page header ---------- */
 .pagehead{display:flex;align-items:center;gap:14px;padding:28px 0 20px}
@@ -506,8 +509,9 @@ a.info:hover b{color:var(--blue)}
     </div>
   </section>
 
-  <footer>
+  <footer id="contact">
     <div class="container">
+      <h3 class="ftitle">Contact us</h3>
       <div><b>Colombo Super Express</b> · Luxury bus service<br><a href="https://www.google.com/maps/search/?api=1&query=146%2F1+Galle+Road+Wellawatta+Colombo" target="_blank" rel="noopener">146/1 Galle Road, Wellawatta, Colombo 06</a></div>
       <div class="fcontact"><a href="tel:+94774270509">077 427 0509</a><a href="tel:+94774470509">077 447 0509</a><a href="https://wa.me/94774470509" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:colombosuperexpress@gmail.com">colombosuperexpress@gmail.com</a></div>
     </div>
