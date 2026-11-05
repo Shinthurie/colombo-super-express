@@ -131,7 +131,9 @@ a{color:inherit;text-decoration:none}
 .callband .nums a{background:#fff;color:var(--blue);font-weight:800;padding:11px 16px;border-radius:12px;font-size:15px;letter-spacing:.02em}
 @media (max-width:640px){.callband .nums{margin-left:0;width:100%}.callband .nums a{flex:1;text-align:center}}
 
-footer{margin-top:48px;border-top:1px solid var(--line);background:#fff}
+main{display:flex;flex-direction:column;min-height:calc(100vh - 67px);min-height:calc(100dvh - 67px)}
+footer{margin-top:auto;border-top:1px solid var(--line);background:#fff}
+main>.screen.active{padding-bottom:48px}
 footer .container{display:flex;justify-content:space-between;gap:20px;padding-top:22px;padding-bottom:22px;font-size:13px;color:var(--muted);flex-wrap:wrap}
 footer b{color:var(--ink)}
 footer .container{line-height:1.7}
@@ -190,7 +192,7 @@ footer a:hover{text-decoration:underline}
   .panel .sum{min-width:0}
   .panel .sum small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .panel .cta{margin:0;width:auto;flex:1}
-  .with-panel{padding-bottom:110px}
+  body[data-screen="seats"] main, body[data-screen="checkout"] main{padding-bottom:calc(96px + var(--safe-b))}
 }
 .sum-mobile{display:none}
 @media (max-width:900px){.sum-mobile{display:block}}
