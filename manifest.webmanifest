@@ -1,0 +1,23 @@
+{
+  "name": "Colombo Super Express",
+  "short_name": "Super Express",
+  "description": "Book the Point Pedro ⇄ Wellawatta Night Super Luxury bus.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a1f5c",
+  "theme_color": "#0a1f5c",
+  "lang": "en",
+  "categories": ["travel", "transportation"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "My tickets", "url": "./#trips", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

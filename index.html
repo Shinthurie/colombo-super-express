@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Colombo Super Express</title>
+<meta name="description" content="Book the Point Pedro ⇄ Wellawatta Night Super Luxury bus — Colombo Super Express.">
+<meta name="theme-color" content="#0a1f5c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Super Express">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e9edf5; --card:#ffffff; --ink:#0b1533; --muted:#6f7a92; --line:#e3e7ef; --soft:#f3f5fa;
+  --navy:#0a1f5c; --navy-2:#122f86; --blue:#1d4ed8; --sky:#3b82f6;
+  --red:#d71920; --red-soft:#fde8e9; --gold:#d6a419; --wa:#1fae55;
+  --radius:22px; --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);display:flex;justify-content:center;align-items:center;min-height:100vh}
+button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
+input{font:inherit}
+a{color:inherit}
+
+.phone{width:390px;height:844px;background:var(--soft);border-radius:46px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(10,31,92,.28),0 0 0 10px #0b1533}
+@media (max-width:480px), (display-mode:standalone){
+  body{display:block}
+  .phone{width:100%;height:100vh;height:100dvh;border-radius:0;box-shadow:none}
+}
+.screen{position:absolute;inset:0;overflow-y:auto;padding-bottom:calc(120px + var(--safe-b));opacity:0;pointer-events:none;transform:translateX(24px);transition:.35s ease}
+.screen.active{opacity:1;pointer-events:auto;transform:none}
+.screen::-webkit-scrollbar{display:none}
+
+/* Hero */
+.hero{background:radial-gradient(120% 90% at 85% 0%,#2a56d6 0%,transparent 55%),linear-gradient(165deg,#06123a 0%,var(--navy) 50%,var(--navy-2) 100%);color:#fff;padding:calc(48px + var(--safe-t)) 22px 96px;border-radius:0 0 34px 34px;position:relative;overflow:hidden}
+.hero .stars{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff9 50%,transparent 51%),radial-gradient(1px 1px at 70% 20%,#fff8 50%,transparent 51%),radial-gradient(1.2px 1.2px at 45% 55%,#fff6 50%,transparent 51%),radial-gradient(1px 1px at 88% 60%,#fff7 50%,transparent 51%),radial-gradient(1.4px 1.4px at 10% 75%,#fff5 50%,transparent 51%)}
+.hero .swoosh{position:absolute;left:-10%;right:-10%;bottom:30px;height:60px;border-top:3px solid var(--red);border-radius:50%;opacity:.85}
+.hero .swoosh.b{bottom:22px;border-color:#fff3}
+.top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.logo-word b{display:block;font-size:21px;font-weight:800;letter-spacing:-.01em;line-height:1}
+.logo-word small{font-size:10px;letter-spacing:.32em;font-weight:700;color:#ffd6d8}
+.logo-word i{display:block;height:3px;width:64px;background:var(--red);border-radius:3px;margin:6px 0}
+.icon-btn{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.12);display:grid;place-items:center;position:relative;color:#fff}
+.hero h1{position:relative;z-index:1;font-size:26px;font-weight:800;margin-top:22px;line-height:1.2}
+.hero h1 span{color:#ffb4b8}
+.hero p.sub{position:relative;z-index:1;font-size:13px;opacity:.78;margin-top:6px}
+.badge{position:absolute;right:20px;top:calc(104px + var(--safe-t));z-index:1;width:74px;height:74px;border-radius:50%;background:radial-gradient(circle,#1b2f70 60%,#0d1d4d);border:2px solid var(--gold);display:grid;place-items:center;text-align:center;font-size:9px;font-weight:800;line-height:1.15;color:#f3d27a;box-shadow:0 0 0 4px rgba(214,164,25,.18)}
+
+/* Search card */
+.search{margin:-70px 18px 0;background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 18px 40px rgba(10,31,92,.12);position:relative;z-index:2}
+.route{position:relative;border:1px solid var(--line);border-radius:18px}
+.field{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.field + .field{border-top:1px dashed var(--line)}
+.pin{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#e7eefc;color:var(--blue);flex-shrink:0}
+.pin.red{background:var(--red-soft);color:var(--red)}
+.field label,.mini label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.field .city{font-size:17px;font-weight:800;margin-top:1px}
+.field .stop{font-size:12px;color:var(--muted)}
+.swap{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;box-shadow:0 8px 18px rgba(215,25,32,.35);transition:transform .35s}
+.swap.spin{transform:translateY(-50%) rotate(180deg)}
+.dates{display:flex;gap:8px;margin-top:12px;overflow-x:auto;padding-bottom:2px}
+.dates::-webkit-scrollbar{display:none}
+.date{min-width:56px;padding:10px 0;border-radius:14px;border:1px solid var(--line);text-align:center;flex-shrink:0}
+.date small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.date b{font-size:17px}
+.date.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.date.on small{color:#c9d4f5}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.mini .v{font-weight:800;margin-top:3px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.stepper{display:flex;gap:6px}
+.stepper button{width:26px;height:26px;border-radius:8px;background:var(--soft);font-weight:800}
+.cta{width:100%;margin-top:16px;padding:16px;border-radius:16px;background:linear-gradient(90deg,var(--red),#ef3b41);color:#fff;font-weight:800;font-size:15px;display:flex;justify-content:center;align-items:center;gap:10px;transition:transform .15s;box-shadow:0 10px 22px rgba(215,25,32,.25);text-decoration:none}
+.cta:active{transform:scale(.98)}
+.cta.navy{background:var(--navy);box-shadow:none}
+.cta.wa{background:var(--wa);box-shadow:0 10px 22px rgba(31,174,85,.25)}
+.cta.ghost{background:var(--card);color:var(--ink);box-shadow:none;border:1px solid var(--line)}
+
+.sec{padding:24px 18px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sec-h h3{font-size:17px;font-weight:800}
+
+/* Amenities */
+.amen{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.am{background:var(--card);border-radius:18px;padding:12px 4px;text-align:center;font-size:10.5px;font-weight:700;color:#3c4766;line-height:1.25}
+.am .ai{width:38px;height:38px;border-radius:12px;margin:0 auto 7px;display:grid;place-items:center;background:#e7eefc;color:var(--blue)}
+.am:nth-child(3n+2) .ai{background:var(--red-soft);color:var(--red)}
+
+/* Schedule cards */
+.sched{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sc{background:var(--card);border-radius:20px;padding:14px;text-align:left;border:1.5px solid transparent}
+.sc small{font-size:11px;font-weight:700;color:var(--red);display:flex;gap:4px;align-items:center}
+.sc b{display:block;font-size:13px;margin:6px 0 10px}
+.sc .tm{display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:12px;padding:8px 10px}
+.sc .tm span{font-size:10px;color:var(--muted);display:block;font-weight:600}
+.sc .tm strong{font-size:16px;font-weight:800;color:var(--navy)}
+
+/* Call banner */
+.call{display:flex;align-items:center;gap:14px;background:linear-gradient(110deg,var(--navy),var(--navy-2));color:#fff;border-radius:var(--radius);padding:16px;position:relative;overflow:hidden}
+.call::after{content:"";position:absolute;right:-30px;bottom:-40px;width:130px;height:130px;border-radius:50%;background:rgba(215,25,32,.35)}
+.call .ph{width:48px;height:48px;border-radius:16px;background:var(--red);display:grid;place-items:center;flex-shrink:0}
+.call b{font-size:15px}
+.call .nums{display:flex;flex-direction:column;gap:4px;margin-top:5px;position:relative;z-index:1}
+.call .nums a{color:#fff;text-decoration:none;font-weight:800;font-size:15px;letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+.call .nums a i{width:18px;height:18px;border-radius:50%;background:var(--wa);display:grid;place-items:center;font-style:normal}
+.tagline{text-align:center;font-size:12px;color:var(--muted);padding:22px 18px 0;font-style:italic}
+
+/* App bar */
+.bar{display:flex;align-items:center;gap:12px;padding:calc(48px + var(--safe-t)) 18px 16px;background:var(--soft);position:sticky;top:0;z-index:5}
+.back{width:42px;height:42px;border-radius:14px;background:var(--card);display:grid;place-items:center;box-shadow:0 4px 12px rgba(10,31,92,.06);flex-shrink:0}
+.bar h2{font-size:17px;font-weight:800}
+.bar small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+
+/* Bus card */
+.bus{background:var(--card);border-radius:var(--radius);margin:0 18px 12px;padding:16px;box-shadow:0 6px 18px rgba(10,31,92,.05)}
+.bus-top{display:flex;justify-content:space-between;align-items:flex-start}
+.op{display:flex;gap:10px;align-items:center}
+.logo{width:44px;height:44px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;position:relative;overflow:hidden}
+.logo::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--red)}
+.op b{font-size:14px;display:block}
+.op small{font-size:12px;color:var(--muted)}
+.price{text-align:right}
+.price b{font-size:19px;font-weight:800;color:var(--navy)}
+.price small{display:block;font-size:11px;color:var(--muted)}
+.timeline{display:flex;align-items:center;gap:10px;margin:16px 0 14px}
+.timeline .t b{font-size:18px;font-weight:800;display:block}
+.timeline .t small{font-size:12px;color:var(--muted)}
+.timeline .t:last-child{text-align:right}
+.track{flex:1;position:relative;height:20px;display:flex;align-items:center}
+.track::before{content:"";position:absolute;left:0;right:0;border-top:2px dashed #cbd2e0}
+.track span{position:relative;margin:0 auto;background:var(--card);padding:0 6px;font-size:11px;color:var(--muted);font-weight:700}
+.track i{position:absolute;width:10px;height:10px;border-radius:50%;border:2px solid var(--blue);background:#fff}
+.track i:first-child{left:-2px}.track i:last-of-type{right:-2px;border-color:var(--red)}
+.bus-foot{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
+.tag{font-size:11px;font-weight:700;padding:5px 9px;border-radius:8px;background:var(--soft);color:#3c4766}
+.tag.b{background:#e7eefc;color:var(--blue)}
+.tag.r{background:var(--red-soft);color:var(--red)}
+.note{margin:0 18px 12px;background:#fff8e6;border:1px solid #f4dfa6;color:#7a5b06;border-radius:16px;padding:12px 14px;font-size:12px;line-height:1.5}
+
+/* Seats */
+.legend{display:flex;justify-content:space-between;margin:0 18px 14px;font-size:12px;color:var(--muted);font-weight:600}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:16px;height:16px;border-radius:5px;border:1.5px solid #cbd2e0;background:#fff}
+.legend i.b{background:#dfe3ea;border-color:#dfe3ea}
+.legend i.s{background:var(--navy);border-color:var(--navy)}
+.legend i.l{background:var(--red-soft);border-color:#f5b3b6}
+.seat-wrap{margin:0 18px;background:var(--card);border-radius:28px;padding:18px 20px 22px;box-shadow:0 6px 18px rgba(10,31,92,.05)}
+.driver{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed var(--line);font-size:12px;color:var(--muted);font-weight:700}
+.wheel{width:34px;height:34px;border-radius:50%;border:3px solid #cbd2e0;display:grid;place-items:center}
+.wheel::after{content:"";width:8px;height:8px;border-radius:50%;background:#cbd2e0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr) 28px repeat(2,1fr);gap:10px}
+.seat{aspect-ratio:1/1.05;border-radius:10px 10px 6px 6px;border:1.5px solid #cbd2e0;background:#fff;font-size:11px;font-weight:700;color:var(--muted);position:relative;transition:.15s}
+.seat::after{content:"";position:absolute;left:18%;right:18%;bottom:4px;height:3px;border-radius:3px;background:currentColor;opacity:.35}
+.seat.booked{background:#dfe3ea;border-color:#dfe3ea;color:#aab2c0;cursor:not-allowed}
+.seat.ladies{background:var(--red-soft);border-color:#f5b3b6;color:var(--red)}
+.seat.sel{background:var(--navy);border-color:var(--navy);color:#fff;transform:scale(1.04);box-shadow:0 6px 14px rgba(10,31,92,.35)}
+
+/* Bottom sheet */
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:28px 28px 0 0;padding:16px 20px calc(22px + var(--safe-b));box-shadow:0 -12px 30px rgba(10,31,92,.1);display:flex;align-items:center;gap:14px;z-index:20;transform:translateY(110%);transition:.35s}
+.sheet.show{transform:none}
+.sheet .sum{min-width:0}
+.sheet .sum small{font-size:12px;color:var(--muted);font-weight:600;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet .sum b{display:block;font-size:20px;font-weight:800;color:var(--navy)}
+.sheet .cta{margin:0;width:auto;flex:1}
+
+/* Forms */
+.box{background:var(--card);border-radius:var(--radius);margin:0 18px 12px;padding:16px}
+.box h4{font-size:14px;font-weight:800;margin-bottom:12px}
+.inp{display:block;width:100%;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;outline:0;background:var(--soft);font-weight:600;color:var(--ink)}
+.inp:focus{border-color:var(--blue);background:#fff}
+.kv{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:7px 0;color:var(--muted)}
+.kv b{color:var(--ink);text-align:right}
+.kv.total{border-top:1px dashed var(--line);margin-top:6px;padding-top:12px;font-size:15px}
+.kv.total b{font-size:18px;color:var(--red)}
+.pay{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:16px;padding:13px;margin-bottom:10px;width:100%;text-align:left}
+.pay.on{border-color:var(--navy);background:#f1f4fc}
+.pay .pi{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-weight:800;font-size:12px;flex-shrink:0}
+.pay .radio{margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid #cbd2e0;flex-shrink:0}
+.pay.on .radio{border:6px solid var(--navy)}
+.pay b{font-size:14px;display:block}.pay small{font-size:12px;color:var(--muted)}
+
+/* Ticket */
+.success{text-align:center;padding:calc(48px + var(--safe-t)) 24px 6px}
+.check{width:76px;height:76px;border-radius:50%;margin:0 auto 14px;background:var(--navy);display:grid;place-items:center;box-shadow:0 0 0 12px #dbe3f7}
+.success h2{font-size:22px;font-weight:800}
+.success p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+.ticket{margin:20px 18px 0;background:var(--card);border-radius:26px;overflow:hidden;box-shadow:0 14px 34px rgba(10,31,92,.08)}
+.tk-top{background:linear-gradient(140deg,#06123a,var(--navy-2));color:#fff;padding:18px;position:relative;overflow:hidden}
+.tk-top::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-18px;height:40px;border-top:3px solid var(--red);border-radius:50%}
+.tk-top .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tk-top small{opacity:.75;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.tk-top .c b{font-size:24px;font-weight:800;display:block}
+.tk-top .mid{text-align:center;font-size:11px;opacity:.85}
+.status{display:inline-block;font-size:10px;font-weight:800;padding:4px 8px;border-radius:6px;background:#fff3;letter-spacing:.06em}
+.status.pend{background:var(--gold);color:#3a2a00}
+.tk-body{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.tk-body small{font-size:11px;color:var(--muted);font-weight:600}
+.tk-body b{display:block;font-size:13.5px;margin-top:2px;word-break:break-word}
+.cut{position:relative;border-top:2px dashed var(--line);margin:0 18px}
+.cut::before,.cut::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--soft)}
+.cut::before{left:-31px}.cut::after{right:-31px}
+.qr-wrap{display:flex;gap:16px;align-items:center;padding:18px}
+.qr{width:92px;height:92px;display:grid;grid-template-columns:repeat(21,1fr);flex-shrink:0}
+.qr i{background:var(--ink)}.qr i.o{background:transparent}
+.qr-wrap p{font-size:12px;color:var(--muted);line-height:1.5}
+.qr-wrap p b{color:var(--ink);font-size:15px;display:block;letter-spacing:.08em}
+
+/* Help */
+.info{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.info:last-child{border:0}
+.info .ii{width:38px;height:38px;border-radius:12px;background:#e7eefc;color:var(--blue);display:grid;place-items:center;flex-shrink:0}
+.info small{display:block;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.info b{font-size:14px;word-break:break-word}
+
+/* Nav */
+.nav{position:absolute;left:14px;right:14px;bottom:calc(16px + var(--safe-b));background:var(--navy);border-radius:26px;display:flex;justify-content:space-around;padding:10px;z-index:30;box-shadow:0 14px 30px rgba(10,31,92,.35);transition:.3s}
+.nav.hide{transform:translateY(160%)}
+.nav button{display:flex;align-items:center;gap:8px;color:#8f9cc4;padding:10px 14px;border-radius:18px;font-size:13px;font-weight:700}
+.nav button span{display:none}
+.nav button.on{background:var(--red);color:#fff}
+.nav button.on span{display:inline}
+
+.install{margin:14px 18px 0;display:none;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:12px 14px;border:1.5px dashed #c4cde3}
+.install.show{display:flex}
+.install p{font-size:12px;color:var(--muted);flex:1}
+.install p b{display:block;color:var(--ink);font-size:13px}
+.install button{background:var(--navy);color:#fff;font-weight:800;font-size:12px;padding:9px 14px;border-radius:12px}
+.toast{position:absolute;left:50%;top:calc(50px + var(--safe-t));transform:translate(-50%,-200%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:14px;font-size:13px;font-weight:600;z-index:50;transition:.3s;max-width:90%;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+.empty{text-align:center;color:var(--muted);padding:40px 30px;font-size:14px;line-height:1.6}
+.offline{position:absolute;top:0;left:0;right:0;z-index:60;background:var(--gold);color:#3a2a00;font-size:12px;font-weight:700;text-align:center;padding:calc(6px + var(--safe-t)) 10px 6px;display:none}
+.offline.show{display:block}
+</style>
+</head>
+<body>
+<div class="phone" id="app">
+  <div class="offline" id="offline">You're offline — saved tickets are still available</div>
+
+  <!-- HOME -->
+  <section class="screen active" id="home">
+    <div class="hero">
+      <div class="stars"></div><div class="swoosh"></div><div class="swoosh b"></div>
+      <div class="top">
+        <div class="logo-word"><b>Colombo</b><i></i><small>SUPER EXPRESS</small></div>
+        <a class="icon-btn" href="tel:+94774270509" aria-label="Call to book">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        </a>
+      </div>
+      <h1>Night Super Luxury<br><span>Bus Service</span></h1>
+      <p class="sub">Daily · Comfortable · Safe · On time</p>
+      <div class="badge">NIGHT<br>SUPER<br>LUXURY</div>
+    </div>
+
+    <div class="search">
+      <div class="route">
+        <div class="field">
+          <div class="pin"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg></div>
+          <div><label>From</label><div class="city" id="fromC">Point Pedro</div><div class="stop" id="fromS">Departs 09:00 PM</div></div>
+        </div>
+        <div class="field">
+          <div class="pin red"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg></div>
+          <div><label>To</label><div class="city" id="toC">Wellawatta</div><div class="stop" id="toS">Colombo 06</div></div>
+        </div>
+        <button class="swap" id="swap" aria-label="Swap direction">
+          <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M21 16l-4 4-4-4"/></svg>
+        </button>
+      </div>
+      <div class="dates" id="dates"></div>
+      <div class="row2">
+        <div class="mini"><label>Passengers</label>
+          <div class="v"><span id="paxV">1 Adult</span><div class="stepper"><button id="paxM" aria-label="Fewer">−</button><button id="paxP" aria-label="More">+</button></div></div>
+        </div>
+        <div class="mini"><label>Departure</label><div class="v"><span>🌙 09:00 PM</span></div></div>
+      </div>
+      <button class="cta" id="searchBtn">Book your seat now
+        <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="install" id="installBox">
+      <p><b>Install the app</b>Book faster & keep tickets offline</p>
+      <button id="installBtn">Install</button>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>Daily night departures</h3></div>
+      <div class="sched">
+        <button class="sc" data-dir="0"><small>🌙 NIGHT DEPARTURE</small><b>Point Pedro → Wellawatta</b><div class="tm"><div><span>Leaves</span><strong>09:00 PM</strong></div></div></button>
+        <button class="sc" data-dir="1"><small>🌙 NIGHT DEPARTURE</small><b>Wellawatta → Point Pedro</b><div class="tm"><div><span>Leaves</span><strong>09:00 PM</strong></div></div></button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><h3>On board</h3></div>
+      <div class="amen" id="amen"></div>
+    </div>
+
+    <div class="sec">
+      <div class="call">
+        <div class="ph"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Call or WhatsApp to book</b>
+          <div class="nums"><a href="tel:+94774270509"><i>✆</i>077 427 0509</a><a href="tel:+94774470509"><i>✆</i>077 447 0509</a></div>
+        </div>
+      </div>
+    </div>
+    <p class="tagline">More than just a ride… a premium travel experience!</p>
+  </section>
+
+  <!-- TRIP -->
+  <section class="screen" id="trip">
+    <div class="bar">
+      <button class="back" data-go="home" aria-label="Back"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+      <div><h2 id="tripTitle">—</h2><small id="tripSub">—</small></div>
+    </div>
+    <div class="bus">
+      <div class="bus-top">
+        <div class="op"><div class="logo">CSE</div><div><b>Colombo Super Express</b><small>Night Super Luxury</small></div></div>
+        <div class="price"><b id="tripFare">—</b><small>per seat</small></div>
+      </div>
+      <div class="timeline">
+        <div class="t"><b>09:00 PM</b><small id="tFrom">—</small></div>
+        <div class="track"><i></i><span>Overnight</span><i></i></div>
+        <div class="t"><b id="tArr">—</b><small id="tTo">—</small></div>
+      </div>
+      <div class="bus-foot">
+        <span class="tag b">Full A/C</span><span class="tag b">Reclining seats</span><span class="tag">Free Wi-Fi</span><span class="tag">Charging ports</span><span class="tag">Entertainment</span><span class="tag r">Free water</span>
+      </div>
+    </div>
+    <div class="note" id="fareNote">ℹ️ Fares and arrival time shown are estimates. Call 077 427 0509 to confirm.</div>
+    <div class="sec" style="padding-top:6px"><button class="cta" id="pickSeats">Select seats</button></div>
+  </section>
+
+  <!-- SEATS -->
+  <section class="screen" id="seats">
+    <div class="bar">
+      <button class="back" data-go="trip" aria-label="Back"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+      <div><h2>Choose your seats</h2><small id="seatSub">—</small></div>
+    </div>
+    <div class="legend"><span><i></i>Available</span><span><i class="b"></i>Booked</span><span><i class="l"></i>Ladies</span><span><i class="s"></i>Selected</span></div>
+    <div class="seat-wrap">
+      <div class="driver"><span>FRONT · Door</span><div class="wheel"></div></div>
+      <div class="grid" id="seatGrid"></div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section class="screen" id="checkout">
+    <div class="bar">
+      <button class="back" data-go="seats" aria-label="Back"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+      <div><h2>Passenger details</h2><small>Almost there</small></div>
+    </div>
+    <div class="box">
+      <h4>Contact</h4>
+      <input class="inp" id="pName" placeholder="Full name" autocomplete="name">
+      <input class="inp" id="pPhone" placeholder="Mobile number (07X XXX XXXX)" inputmode="tel" autocomplete="tel">
+      <input class="inp" id="pNic" placeholder="NIC number (optional)" style="margin-bottom:0">
+    </div>
+    <div class="box">
+      <h4>Payment</h4>
+      <div id="pays">
+        <button class="pay on" data-p="Pay on boarding"><div class="pi">Rs</div><div><b>Pay on boarding</b><small>Cash to the conductor</small></div><i class="radio"></i></button>
+        <button class="pay" data-p="Bank transfer"><div class="pi">🏦</div><div><b>Bank transfer</b><small>Details sent on WhatsApp</small></div><i class="radio"></i></button>
+      </div>
+    </div>
+    <div class="box" id="summary"></div>
+  </section>
+
+  <!-- TICKET -->
+  <section class="screen" id="ticket">
+    <div class="success">
+      <div class="check"><svg width="34" height="34" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Seats reserved!</h2>
+      <p>Send your booking on WhatsApp so our team can confirm it.</p>
+    </div>
+    <div id="tk"></div>
+    <div class="sec">
+      <a class="cta wa" id="waBtn" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.4c-.1.1-.3.3-.1.6.1.3.7 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg>
+        Send booking on WhatsApp</a>
+      <button class="cta ghost" data-go="home" style="margin-top:10px">Back to home</button>
+    </div>
+  </section>
+
+  <!-- MY TICKETS -->
+  <section class="screen" id="trips">
+    <div class="bar"><div><h2>My tickets</h2><small>Saved on this phone — available offline</small></div></div>
+    <div id="tripList"></div>
+  </section>
+
+  <!-- HELP -->
+  <section class="screen" id="help">
+    <div class="bar"><div><h2>Contact us</h2><small>Always open</small></div></div>
+    <div class="sec" style="padding-top:0">
+      <div class="call">
+        <div class="ph"><svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Booking numbers</b><div class="nums"><a href="tel:+94774270509"><i>✆</i>077 427 0509</a><a href="tel:+94774470509"><i>✆</i>077 447 0509</a></div></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="box" style="margin:0">
+        <a class="info" href="https://www.google.com/maps/search/?api=1&query=146%2F1+Galle+Road+Wellawatta+Colombo" target="_blank" rel="noopener"><div class="ii">📍</div><div><small>Office</small><b>146/1 Galle Road, Wellawatta, Colombo 00600</b></div></a>
+        <a class="info" href="mailto:colombosuperexpress@gmail.com"><div class="ii">✉️</div><div><small>Email</small><b>colombosuperexpress@gmail.com</b></div></a>
+        <a class="info" href="https://wa.me/94774470509" target="_blank" rel="noopener"><div class="ii">💬</div><div><small>WhatsApp</small><b>+94 77 447 0509</b></div></a>
+        <div class="info"><div class="ii">🕘</div><div><small>Service</small><b>Daily night service · 09:00 PM both ways</b></div></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="box" style="margin:0">
+        <h4>Good to know</h4>
+        <div class="kv"><span>Boarding</span><b>Please arrive 15 min early</b></div>
+        <div class="kv"><span>Ticket</span><b>Show booking ref to conductor</b></div>
+        <div class="kv"><span>Changes</span><b>Call the booking numbers</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sheet" id="sheet">
+    <div class="sum"><small id="sheetLbl">—</small><b id="sheetAmt">Rs. 0</b></div>
+    <button class="cta" id="sheetBtn">Continue</button>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="on" data-tab="home"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></button>
+    <button data-tab="trips"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a3 3 0 0 0 0 6v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a3 3 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg><span>Tickets</span></button>
+    <button data-tab="help"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Contact</span></button>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+/* ================= CONFIG — edit these to match the real service ================= */
+const CONFIG = {
+  fare: 4500,                 // LKR per seat — PLACEHOLDER, set the real fare
+  arrival: '05:30 AM',        // approximate arrival — PLACEHOLDER
+  whatsapp: '94774470509',    // booking requests go here
+  seatsPerRow: 4, rows: 10,   // 2 + 2 layout, 40 seats
+  ladiesRows: 2,              // first N rows, right side = ladies seats
+  bookedSeats: [],            // e.g. ['A1','C3'] — connect to a backend for live availability
+};
+const STOPS = [
+  {city:'Point Pedro', stop:'Point Pedro Bus Stand'},
+  {city:'Wellawatta', stop:'146/1 Galle Rd, Colombo 06'},
+];
+const AMENITIES = [
+  ['💺','Luxury reclining seats'],['❄️','Full A/C'],['📶','Free Wi-Fi'],['🔌','Charging ports'],
+  ['📺','Entertainment'],['💧','Free water'],['🛡️','Safe & reliable'],['🌙','Daily night run'],
+];
+/* ================================================================================ */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const rs = n => 'Rs. ' + n.toLocaleString('en-LK');
+const state = {dir:0, date:0, pax:1, seats:[], pay:'Pay on boarding', trips:load()};
+
+function load(){ try{return JSON.parse(localStorage.getItem('cse_trips'))||[]}catch{return[]} }
+function save(){ try{localStorage.setItem('cse_trips',JSON.stringify(state.trips))}catch{} }
+const from = () => STOPS[state.dir], to = () => STOPS[1-state.dir];
+
+/* ---------- Home ---------- */
+function renderRoute(){
+  $('#fromC').textContent=from().city; $('#fromS').textContent='Departs 09:00 PM · '+from().stop;
+  $('#toC').textContent=to().city; $('#toS').textContent=to().stop;
+  $$('.sc').forEach(c=>c.style.borderColor = +c.dataset.dir===state.dir?'var(--red)':'transparent');
+}
+$('#swap').onclick=()=>{state.dir=1-state.dir;renderRoute();$('#swap').classList.toggle('spin')};
+$$('.sc').forEach(c=>c.onclick=()=>{state.dir=+c.dataset.dir;renderRoute();openTrip()});
+
+function dayOf(i){const x=new Date();x.setHours(0,0,0,0);x.setDate(x.getDate()+i);return x}
+function dateLabel(i=state.date){return i===0?'Tonight':dayOf(i).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})}
+function renderDates(){
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  $('#dates').innerHTML=[...Array(14).keys()].map(i=>{const x=dayOf(i);
+    return `<button class="date ${i===state.date?'on':''}" data-i="${i}"><small>${i===0?'Today':days[x.getDay()]}</small><b>${x.getDate()}</b></button>`}).join('');
+  $$('#dates .date').forEach(b=>b.onclick=()=>{state.date=+b.dataset.i;renderDates()});
+}
+function setPax(n){state.pax=Math.max(1,Math.min(8,n));$('#paxV').textContent=state.pax+(state.pax>1?' Adults':' Adult')}
+$('#paxM').onclick=()=>setPax(state.pax-1);
+$('#paxP').onclick=()=>setPax(state.pax+1);
+$('#amen').innerHTML=AMENITIES.map(([i,t])=>`<div class="am"><div class="ai">${i}</div>${t}</div>`).join('');
+$('#searchBtn').onclick=openTrip;
+
+/* ---------- Trip ---------- */
+function openTrip(){
+  $('#tripTitle').textContent=`${from().city} → ${to().city}`;
+  $('#tripSub').textContent=`${dateLabel()} · ${state.pax} passenger${state.pax>1?'s':''}`;
+  $('#tripFare').textContent=rs(CONFIG.fare);
+  $('#tFrom').textContent=from().city; $('#tTo').textContent=to().city;
+  $('#tArr').innerHTML=`${CONFIG.arrival}<sup style="font-size:10px;color:var(--red)">+1</sup>`;
+  go('trip');
+}
+$('#pickSeats').onclick=openSeats;
+
+/* ---------- Seats ---------- */
+function openSeats(){
+  state.seats=[];
+  $('#seatSub').textContent=`${dateLabel()}, 09:00 PM · ${rs(CONFIG.fare)} / seat`;
+  let h='';
+  for(let r=0;r<CONFIG.rows;r++) for(let c=0;c<5;c++){
+    if(c===2){h+='<div></div>';continue}
+    const label=String.fromCharCode(65+r)+(c<2?c+1:c);
+    const cls=CONFIG.bookedSeats.includes(label)?'booked':(r<CONFIG.ladiesRows&&c>2?'ladies':'');
+    h+=`<button class="seat ${cls}" data-s="${label}" ${cls==='booked'?'disabled':''} aria-label="Seat ${label}">${label}</button>`;
+  }
+  $('#seatGrid').innerHTML=h;
+  $$('.seat:not(.booked)').forEach(s=>s.onclick=()=>toggleSeat(s));
+  go('seats');
+}
+function toggleSeat(el){
+  const s=el.dataset.s, i=state.seats.indexOf(s);
+  if(i>-1){state.seats.splice(i,1);el.classList.remove('sel')}
+  else if(state.seats.length>=state.pax){toast(`${state.pax} passenger${state.pax>1?'s':''} selected — change on the home screen`);return}
+  else{state.seats.push(s);el.classList.add('sel')}
+  updateSheet();
+}
+function updateSheet(){
+  const n=state.seats.length;
+  $('#sheetLbl').textContent=n?`${n} seat${n>1?'s':''} · ${state.seats.join(', ')}`:`Select ${state.pax} seat${state.pax>1?'s':''}`;
+  $('#sheetAmt').textContent=rs(n*CONFIG.fare);
+}
+$('#sheetBtn').onclick=()=>{
+  const cur=$('.screen.active').id;
+  if(cur==='seats'){
+    if(!state.seats.length){toast('Please select a seat');return}
+    renderSummary();go('checkout');
+  }else if(cur==='checkout'){
+    const name=$('#pName').value.trim(), ph=$('#pPhone').value.replace(/[\s-]/g,'');
+    if(!name){toast('Enter passenger name');$('#pName').focus();return}
+    if(!/^(\+?94|0)?7\d{8}$/.test(ph)){toast('Enter a valid Sri Lankan mobile number');$('#pPhone').focus();return}
+    confirmBooking(name,ph,$('#pNic').value.trim());
+  }
+};
+
+/* ---------- Checkout ---------- */
+$$('#pays .pay').forEach(p=>p.onclick=()=>{state.pay=p.dataset.p;$$('#pays .pay').forEach(x=>x.classList.toggle('on',x===p))});
+const total=()=>state.seats.length*CONFIG.fare;
+function renderSummary(){
+  $('#summary').innerHTML=`<h4>Booking summary</h4>
+    <div class="kv"><span>Route</span><b>${from().city} → ${to().city}</b></div>
+    <div class="kv"><span>Departure</span><b>${dateLabel()}, 09:00 PM</b></div>
+    <div class="kv"><span>Seats</span><b>${state.seats.join(', ')}</b></div>
+    <div class="kv"><span>Fare</span><b>${state.seats.length} × ${rs(CONFIG.fare)}</b></div>
+    <div class="kv total"><span>Total</span><b>${rs(total())}</b></div>`;
+}
+
+/* ---------- Ticket ---------- */
+function seeded(n){let s=n;return()=>(s=(s*9301+49297)%233280)/233280}
+function qr(seed){
+  const r=seeded(seed);let h='';
+  for(let y=0;y<21;y++)for(let x=0;x<21;x++){
+    const f=[[0,0],[14,0],[0,14]].find(([a,b])=>x>=a&&x<a+7&&y>=b&&y<b+7);
+    let on; if(f){const dx=x-f[0],dy=y-f[1];on=dx===0||dy===0||dx===6||dy===6||(dx>=2&&dx<=4&&dy>=2&&dy<=4)} else on=r()<.5;
+    h+=`<i class="${on?'':'o'}"></i>`;
+  }
+  return h;
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function waLink(t){
+  const msg=`Hello Colombo Super Express, I'd like to confirm my booking:%0A`+
+    encodeURIComponent(`Ref: ${t.ref}\nRoute: ${t.from} → ${t.to}\nDate: ${t.dateText}, 09:00 PM\nSeats: ${t.seats.join(', ')}\nName: ${t.name}\nMobile: ${t.phone}${t.nic?`\nNIC: ${t.nic}`:''}\nPayment: ${t.pay}\nTotal: ${rs(t.total)}`);
+  return `https://wa.me/${CONFIG.whatsapp}?text=${msg}`;
+}
+function confirmBooking(name,phone,nic){
+  const t={ref:'CSE'+Date.now().toString(36).slice(-6).toUpperCase(),name,phone,nic,
+    from:from().city,to:to().city,dateText:dateLabel(),dateISO:dayOf(state.date).toISOString(),
+    seats:[...state.seats],total:total(),pay:state.pay,created:Date.now()};
+  state.trips.unshift(t); save();
+  $('#tk').innerHTML=`<div class="ticket">${ticketHTML(t)}</div>`;
+  $('#waBtn').href=waLink(t);
+  ['#pName','#pPhone','#pNic'].forEach(s=>$(s).value='');
+  go('ticket');
+}
+function ticketHTML(t){
+  return `<div class="tk-top">
+      <div class="row"><small>Colombo Super Express</small><span class="status pend">PENDING CONFIRMATION</span></div>
+      <div class="row" style="margin-top:14px">
+        <div class="c"><small>09:00 PM</small><b>${t.from==='Point Pedro'?'PPD':'WLW'}</b><small>${t.from}</small></div>
+        <div class="mid">🚌<br>Night Super<br>Luxury</div>
+        <div class="c" style="text-align:right"><small>${CONFIG.arrival}</small><b>${t.to==='Point Pedro'?'PPD':'WLW'}</b><small>${t.to}</small></div>
+      </div>
+    </div>
+    <div class="tk-body">
+      <div><small>Passenger</small><b>${esc(t.name)}</b></div>
+      <div><small>Date</small><b>${esc(t.dateText==='Tonight'?new Date(t.dateISO).toLocaleDateString('en-GB',{day:'numeric',month:'short'}):t.dateText)}</b></div>
+      <div><small>Seats</small><b>${t.seats.join(', ')}</b></div>
+      <div><small>Mobile</small><b>${esc(t.phone)}</b></div>
+      <div><small>Payment</small><b>${esc(t.pay)}</b></div>
+      <div><small>Total</small><b>${rs(t.total)}</b></div>
+    </div>
+    <div class="cut"></div>
+    <div class="qr-wrap"><div class="qr">${qr([...t.ref].reduce((a,c)=>a+c.charCodeAt(0)*7,1))}</div>
+      <p>Booking ref<b>${t.ref}</b>Show to the conductor. Queries: 077 427 0509 / 077 447 0509</p></div>`;
+}
+function renderTrips(){
+  $('#tripList').innerHTML=state.trips.length?state.trips.map((t,i)=>`
+    <div class="ticket" style="margin:0 18px 10px">${ticketHTML(t)}</div>
+    <div style="display:flex;gap:8px;margin:0 18px 22px">
+      <a class="cta wa" style="margin:0;padding:12px;font-size:13px" href="${waLink(t)}" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="cta ghost" style="margin:0;padding:12px;font-size:13px" data-del="${i}">Remove</button>
+    </div>`).join('')
+    :'<div class="empty">🎫<br><br>No tickets yet.<br>Book your seat on the night bus and it will appear here — even offline.</div>';
+  $$('[data-del]').forEach(b=>b.onclick=()=>{if(confirm('Remove this ticket from your phone?')){state.trips.splice(+b.dataset.del,1);save();renderTrips()}});
+}
+
+/* ---------- Navigation ---------- */
+function go(id){
+  $$('.screen').forEach(s=>s.classList.toggle('active',s.id===id));
+  $('#'+id).scrollTop=0;
+  $('#nav').classList.toggle('hide',['seats','checkout'].includes(id));
+  $('#sheet').classList.toggle('show',id==='seats'||id==='checkout');
+  $('#sheetBtn').textContent=id==='checkout'?'Reserve seats':'Continue';
+  if(id==='seats')updateSheet();
+  if(id==='checkout'){$('#sheetLbl').textContent='Total payable';$('#sheetAmt').textContent=rs(total())}
+  if(id==='trips')renderTrips();
+  const tab=['trips','help'].includes(id)?id:'home';
+  $$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  if(history.state?.id!==id) history.pushState({id},'');
+}
+window.onpopstate=e=>{const id=e.state?.id||'home';history.replaceState({id},'');go(id)};
+$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+$$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+
+let tt;function toast(m){$('#toast').textContent=m;$('#toast').classList.add('show');clearTimeout(tt);tt=setTimeout(()=>$('#toast').classList.remove('show'),2400)}
+
+/* ---------- PWA ---------- */
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+let deferred;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#installBox').classList.add('show')});
+$('#installBtn').onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$('#installBox').classList.remove('show')};
+window.addEventListener('appinstalled',()=>$('#installBox').classList.remove('show'));
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent), standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+if(isIOS&&!standalone){$('#installBox p').innerHTML='<b>Install the app</b>Tap Share ⬆️ then “Add to Home Screen”';$('#installBtn').style.display='none';$('#installBox').classList.add('show')}
+const net=()=>$('#offline').classList.toggle('show',!navigator.onLine);
+addEventListener('online',net);addEventListener('offline',net);net();
+
+history.replaceState({id:'home'},'');
+renderRoute();renderDates();setPax(1);
+if(location.hash==='#trips') go('trips');
+</script>
+</body>
+</html>
